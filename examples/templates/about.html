@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户管理</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            text-align: center;
+        }
+        .button {
+            background-color: #4CAF50; /* 绿色 */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+        }
+        .button:hover {
+            background-color: #45a049; /* 深绿色 */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>用户管理</h1>
+
+        <a href="/add" class="button">增加用户</a>
+        <a href="/delete" class="button">删除用户</a>
+        <a href="/get" class="button">查询用户</a>
+        <a href="/revise" class="button">修改用户</a>
+        <a href="/update_images" class="button">采集图像</a>
+        <a href="/list_all_users" class="button">显示用户</a>
+        <a href="/list_all_user_faces" class="button">显示用户信息</a>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add User</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 12px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
+            box-sizing: border-box; /* Adjusts for padding */
+        }
+
+       .button_sub {
+        background-color: #4CAF50 !important;
+        color: white;
+        padding: 14px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        width: 100%;
+        font-size: 16px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s ease;
+    }
+
+
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Add User</h1>
+    <form id="addUserForm">
+        <label for="student_id">Student ID:</label>
+        <input type="text" id="student_id" name="student_id" required>
+
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <label for="card_id">card_id:</label>
+        <input type="text" id="card_id" name="card_id" required>
+
+        <button class="button_sub" type="button" onclick="addUser()">Add User</button>
+    </form>
+
+    <script>
+        function addUser() {
+            var studentId = document.getElementById('student_id').value;
+            var username = document.getElementById('username').value;
+            var card_id = document.getElementById('card_id').value;
+
+            var data = {
+                'student_id': studentId,
+                'username': username,
+                'card_id': card_id
+            };
+
+            fetch('/add', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                alert('User added successfully');
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Failed to add user');
+            });
+        }
+    </script>
+</body>
+</html>
