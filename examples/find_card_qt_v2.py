@@ -148,7 +148,7 @@ class MainPanel(QWidget):
         # 网格之间设置10pixs的间隔
         self.mainPanel_layout.setSpacing(10)
         self.button_layout = QGridLayout()
-        self.mainPanel_layout.addLayout(self.button_layout, 0, 1)
+        self.mainPanel_layout.addLayout(self.button_layout, 0, 5,0,1)
 
 
         # must init after
@@ -166,7 +166,7 @@ class MainPanel(QWidget):
         self.qls.addWidget(self.three)
         self.qls.addWidget(self.successFaceWidget)
 
-        self.mainPanel_layout.addLayout(self.qls, 0, 0)
+        self.mainPanel_layout.addLayout(self.qls, 0, 0,0,4)
 
         self.setLayout(self.mainPanel_layout)
         # init
