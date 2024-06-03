@@ -204,13 +204,9 @@ class MainPanel(QWidget):
     #     if 'Running on' in output:
     #         QMessageBox.information(self, 'Flask启动成功', output)
     def init_button_ui(self):
-        self.button_layout.setContentsMargins(20, 20, 20, 20)
+        # self.button_layout.setContentsMargins(20, 20, 20, 20)
         # 网格之间设置10pixs的间隔
-        self.button_layout.setSpacing(10)
-        select_Panel1_button = QPushButton("panel1")
-        select_Panel2_button = QPushButton("panel2")
-        select_Panel3_button = QPushButton("panel3")
-        select_Panel4_button = QPushButton("panel4")
+        # self.button_layout.setSpacing(10)
         self.qlabel = QLabel()
         self.qlabel.setStyleSheet("QLabel{background:white;}"
                                       "QLabel{color:block;font-size:20px;font-weight:bold;font-family:宋体;}"
@@ -223,16 +219,9 @@ class MainPanel(QWidget):
         self.succcess_timer.timeout.connect(self.success_executeAfterDelay)
         self.succcess_timer.setSingleShot(True)  # 设置为单次触发
 
-        # qlabel.setMinimumSize(self.width * 0.1, self.height)
-        # self.button_layout.addWidget(select_Panel1_button,4, 0)
-        # self.button_layout.addWidget(select_Panel2_button, 5, 0)
-        # self.button_layout.addWidget(select_Panel3_button, 6, 0)
-        # self.button_layout.addWidget(select_Panel4_button, 7, 0)
+
         self.button_layout.addWidget(self.qlabel, 3, 0)
-        select_Panel1_button.clicked.connect(lambda: self.buttonIsClicked(select_Panel1_button))
-        select_Panel2_button.clicked.connect(lambda: self.buttonIsClicked(select_Panel2_button))
-        select_Panel3_button.clicked.connect(lambda: self.buttonIsClicked(select_Panel3_button))
-        select_Panel4_button.clicked.connect(lambda: self.buttonIsClicked(select_Panel4_button))
+
 
         self.init_time_ui()
 
