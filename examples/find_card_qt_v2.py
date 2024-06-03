@@ -244,6 +244,7 @@ class MainPanel(QWidget):
         self.time_label.setStyleSheet("QLabel{background:white;}"
                                       "QLabel{color:rgb(300,300,300,120);font-size:20px;font-weight:bold;font-family:宋体;}"
                                       )
+        self.time_label.setFixedHeight(200)
         # 动态显示时间在label上
         timer = QTimer(self)
 
