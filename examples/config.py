@@ -4,7 +4,7 @@ db_uri = "/home/ai/card_id_client/examples/face_data.db"
 
 server_port = 25401
 secert = "sbgh34y234"
-my_ip = "10.15.246.241"
+my_ip = "10.15.246.66"
 service_id = "ger354as24"
 consul_server_ip = "192.168.12.12"
 consul_server_port = 18500
