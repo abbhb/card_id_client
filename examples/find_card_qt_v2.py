@@ -314,6 +314,7 @@ class MainPanel(QWidget):
         if shifoushibie:
             self.user_info_webview.page().runJavaScript("ShiBieZhong('1')")
         else:
+            # 这个用于重返默认，需要在其他的都来个定时器显示这个
             self.user_info_webview.page().runJavaScript("ShiBieZhong('0')")
         # self.two.update(base64)
         # self.qls.setCurrentIndex(1)

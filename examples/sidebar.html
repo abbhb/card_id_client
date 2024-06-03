@@ -100,12 +100,11 @@
         </div>
     </div>
     <script>
-        var myTimer = null;
 
 
         function closeInfo() {
             document.getElementById('info_some').hidden= true;
-               document.getElementById('student_id').innerText = '';
+            document.getElementById('student_id').innerText = '';
           document.getElementById('roomname').innerText = '';
           document.getElementById('photos').src = 'http://easyoa.fun:9090/publicimage/1412.png';
           document.getElementById('msgtip').innerText = '请刷卡!';
@@ -114,54 +113,21 @@
 
 
         function Success(school_id, name,deptname,image_url) {
-             // 检查是否已经有定时器在运行
-              if (myTimer !== null) {
-                // 如果存在定时器，先清除它
-                clearInterval(myTimer);
-                console.log('定时器已清除');
-              }
+
             document.getElementById('info_some').hidden= false;
           document.getElementById('student_id').innerText = school_id;
           document.getElementById('roomname').innerText = deptname;
           document.getElementById('photos').src = image_url;
           document.getElementById('msgtip').innerText = '欢迎回来，'+name;
-          if (myTimer === null) {
-                // 如果存在定时器，先清除它
-                // 创建一个新的定时器
-              myTimer = setInterval(function() {
-                // 这里是定时器要执行的代码
-                closeInfo();
-                // 如果需要停止定时器，可以在这里清除
-                // clearInterval(myTimer);
-              }, 2500); // 假设定时器每秒执行一次
-
-         }
 
 
         }
 
         function Error(msg) {
-            if (myTimer !== null) {
-                // 如果存在定时器，先清除它
-                clearInterval(myTimer);
-                console.log('定时器已清除');
-              }
+
             document.getElementById('info_some').hidden= true;
             document.getElementById('photos').src = 'http://easyoa.fun:9090/publicimage/z1kVKL2ZDJ.jpg';
           document.getElementById('msgtip').innerText = '签到失败，'+msg;
-
-
-            if (myTimer === null) {
-                // 如果存在定时器，先清除它
-                // 创建一个新的定时器
-                  myTimer = setInterval(function() {
-                    // 这里是定时器要执行的代码
-                    closeInfo();
-                    // 如果需要停止定时器，可以在这里清除
-                    // clearInterval(myTimer);
-                  }, 2100); // 假设定时器每秒执行一次
-                 }
-
 
 
         }
@@ -172,25 +138,12 @@
          */
         function ShiBieZhong(shifoushibiezhong) {
 
-            document.getElementById('photos').src = 'http://easyoa.fun:9090/publicimage/loadings.gif';
             if (String(shifoushibiezhong)==='1'){
-                 if (myTimer === null) {
-                // 如果存在定时器，先清除它
-                // 创建一个新的定时器
-                  myTimer = setInterval(function() {
-                    // 这里是定时器要执行的代码
-                    closeInfo();
-                    // 如果需要停止定时器，可以在这里清除
-                    // clearInterval(myTimer);
-                  }, 3000); // 假设定时器每秒执行一次
-                 }
+                            document.getElementById('photos').src = 'http://easyoa.fun:9090/publicimage/loadings.gif';
+
             }
             else{
-             if (myTimer !== null) {
-                // 如果存在定时器，先清除它
-                clearInterval(myTimer);
-                console.log('定时器已清除');
-              }
+
                 closeInfo();
             }
         }
