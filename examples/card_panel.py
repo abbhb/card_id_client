@@ -9,22 +9,24 @@ from PyQt5.QtWidgets import QWidget, QLabel
 class noDataPanel(QWidget):
     def __init__(self):
         super(noDataPanel, self).__init__()
-        self.setFixedWidth(200)
 
         self.verticalLayout = QtWidgets.QVBoxLayout()
         self.verticalLayout.setObjectName("verticalLayout")
         self.qlabel = QLabel("请刷卡!")
+        self.qlabel.setFixedWidth(200)
+
         self.verticalLayout.addWidget(self.qlabel)
         self.setLayout(self.verticalLayout)
 
 class loadingDataPanel(QWidget):
     def __init__(self):
         super(loadingDataPanel, self).__init__()
-        self.setFixedWidth(200)
 
         self.verticalLayout = QtWidgets.QVBoxLayout()
         self.verticalLayout.setObjectName("verticalLayout")
         self.qlabel = QLabel("识别中!")
+        self.qlabel.setFixedWidth(200)
+
         self.verticalLayout.addWidget(self.qlabel)
         self.setLayout(self.verticalLayout)
 
@@ -32,12 +34,16 @@ class loadingDataPanel(QWidget):
 class SuccessDataPanel(QWidget):
     def __init__(self):
         super(SuccessDataPanel, self).__init__()
-        self.setFixedWidth(200)
 
         self.verticalLayout = QtWidgets.QVBoxLayout()
         self.verticalLayout.setObjectName("verticalLayout")
+
         self.qlabel = QLabel("签到成功")
+        self.qlabel.setFixedWidth(200)
+
         self.photo = QLabel()
+        self.photo.setFixedWidth(200)
+
         self.user_img = QPixmap("unknown.png")
         self.photo.setPixmap(self.user_img)
         self.verticalLayout.addWidget(self.qlabel)
