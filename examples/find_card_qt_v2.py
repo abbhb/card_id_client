@@ -31,6 +31,7 @@ from card_panel import SuccessDataPanel, noDataPanel, ErrorDataPanel, loadingDat
 from card_data_lite import CardData
 from flask_server import app as _app
 face_tip_text = "欢迎您使用人脸签到系统!"
+button_Width = 300
 print("注意：ip必须为10段，且网关必须为10.15.247.254！！！")
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 # lunxun update
@@ -213,7 +214,7 @@ class MainPanel(QWidget):
                                       )
         # 动态显示时间在label上
         self.qlabel.setText(face_tip_text)
-        self.qlabel.setFixedWidth(200)
+        self.qlabel.setFixedWidth(button_Width)
         # 创建一个定时器
         self.succcess_timer = QTimer(self)
         self.succcess_timer.timeout.connect(self.success_executeAfterDelay)
@@ -227,7 +228,7 @@ class MainPanel(QWidget):
 
     def init_time_ui(self):
         self.time_label = QLabel(self)
-        self.time_label.setFixedWidth(300)
+        self.time_label.setFixedWidth(button_Width)
         self.time_label.move(90, 80)
         self.time_label.setStyleSheet("QLabel{background:white;}"
                                       "QLabel{color:rgb(300,300,300,120);font-size:20px;font-weight:bold;font-family:宋体;}"
