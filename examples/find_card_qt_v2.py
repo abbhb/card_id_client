@@ -264,7 +264,7 @@ class MainPanel(QWidget):
         self.user_info.addWidget(self.success_info)
         self.user_info.addWidget(self.error_info)
         self.user_info.addWidget(self.loading_info)
-        self.button_layout.addLayout(self.user_info,0,0)
+        self.button_layout.addLayout(self.user_info,0,1)
         self.user_info.setCurrentIndex(0)
 
     def success_executeAfterDelay(self):
