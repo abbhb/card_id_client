@@ -384,8 +384,8 @@ class successFaceWidget(QWidget):
 
         successFace_layout = QHBoxLayout()
         self.webview = QWebEngineView()
-        self.webview.setFixedWidth(1600)
-        self.webview.setFixedHeight(1080)
+        self.webview.setFixedWidth(1500)
+        self.webview.setFixedHeight(900)
         successFace_layout.addWidget(self.webview)
         self.webview.load(QUrl("file://"+search_uri))
         self.setLayout(successFace_layout)
