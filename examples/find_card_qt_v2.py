@@ -258,7 +258,7 @@ class MainPanel(QWidget):
         # self.button_layout.addLayout(self.user_info,1,0)
         # self.user_info.setCurrentIndex(0)
 
-        self.button_layout.addLayout(self.user_info_webview, 1, 0)
+        self.button_layout.addWidget(self.user_info_webview, 1, 0)
     def success_executeAfterDelay(self):
         self.qlabel.setStyleSheet("QLabel{background:white;}"
                                   "QLabel{color:block;font-size:20px;font-weight:bold;font-family:宋体;}"
