@@ -160,7 +160,6 @@ class MainPanel(QWidget):
         self.three = initDataPanel()
         self.successFaceWidget = successFaceWidget()
         self.qls = QStackedLayout()
-        self.qls.setGeometry(QtCore.QRect(0, 0, 500, 600))
         self.qls.addWidget(self.one)
         self.qls.addWidget(self.two)
         self.qls.addWidget(self.three)
