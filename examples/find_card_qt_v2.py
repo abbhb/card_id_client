@@ -218,7 +218,7 @@ class MainPanel(QWidget):
                                       )
         # 动态显示时间在label上
         self.qlabel.setText(face_tip_text)
-
+        self.qlabel.setFixedWidth(200)
         # 创建一个定时器
         self.succcess_timer = QTimer(self)
         self.succcess_timer.timeout.connect(self.success_executeAfterDelay)
@@ -229,7 +229,7 @@ class MainPanel(QWidget):
         # self.button_layout.addWidget(select_Panel2_button, 5, 0)
         # self.button_layout.addWidget(select_Panel3_button, 6, 0)
         # self.button_layout.addWidget(select_Panel4_button, 7, 0)
-        self.button_layout.addWidget(self.qlabel, 4, 0)
+        self.button_layout.addWidget(self.qlabel, 3, 0)
         select_Panel1_button.clicked.connect(lambda: self.buttonIsClicked(select_Panel1_button))
         select_Panel2_button.clicked.connect(lambda: self.buttonIsClicked(select_Panel2_button))
         select_Panel3_button.clicked.connect(lambda: self.buttonIsClicked(select_Panel3_button))
@@ -255,7 +255,7 @@ class MainPanel(QWidget):
 
     def init_user_info_ui(self):
         self.user_info = QStackedLayout()
-        self.user_info.setGeometry(QtCore.QRect(0, 0, 200, 280))
+
         self.success_info = SuccessDataPanel()
         self.error_info = ErrorDataPanel()
         self.default_info = noDataPanel()

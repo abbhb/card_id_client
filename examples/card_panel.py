@@ -9,6 +9,8 @@ from PyQt5.QtWidgets import QWidget, QLabel
 class noDataPanel(QWidget):
     def __init__(self):
         super(noDataPanel, self).__init__()
+        self.setFixedWidth(200)
+
         self.verticalLayout = QtWidgets.QVBoxLayout()
         self.verticalLayout.setObjectName("verticalLayout")
         self.qlabel = QLabel("请刷卡!")
@@ -18,6 +20,8 @@ class noDataPanel(QWidget):
 class loadingDataPanel(QWidget):
     def __init__(self):
         super(loadingDataPanel, self).__init__()
+        self.setFixedWidth(200)
+
         self.verticalLayout = QtWidgets.QVBoxLayout()
         self.verticalLayout.setObjectName("verticalLayout")
         self.qlabel = QLabel("识别中!")
@@ -28,6 +32,8 @@ class loadingDataPanel(QWidget):
 class SuccessDataPanel(QWidget):
     def __init__(self):
         super(SuccessDataPanel, self).__init__()
+        self.setFixedWidth(200)
+
         self.verticalLayout = QtWidgets.QVBoxLayout()
         self.verticalLayout.setObjectName("verticalLayout")
         self.qlabel = QLabel("签到成功")
@@ -52,6 +58,8 @@ class SuccessDataPanel(QWidget):
 class ErrorDataPanel(QWidget):
     def __init__(self):
         super(ErrorDataPanel, self).__init__()
+        self.setFixedWidth(200)
+
         self.verticalLayout = QtWidgets.QVBoxLayout()
         self.verticalLayout.setObjectName("verticalLayout")
         self.qlabel = QLabel("签到失败!")
