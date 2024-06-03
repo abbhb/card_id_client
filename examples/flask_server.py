@@ -45,7 +45,7 @@ def list_all_users():
     return render_template('list_users.html', users=users)
 
 
-#有用，定义support为face的
+#有用，定义support为card的
 @app.route('/list_all_card',methods=['GET'])
 def list_all_card():
     # 创建 FaceData 实例并获取所有用户信息
@@ -72,30 +72,30 @@ def sync_upload():
         facedata = CardData()
 
         data = request.get_json()
-        user_data = data["data"]
+        card_data = data["data"]
         if data["model"] == 'ADD':
             # 逐条处理就行
-            for i in user_data:
+            for i in card_data:
                 if facedata.exists_user(i["student_id"]):
                     if i["is_none"] == True:
-                        # 为空还存在用户，按照规则需要也同步为空,暂时只支持人脸一种，删除该条数据即可!
+                        # 为空还存在用户，按照规则需要也同步为空,暂时只支持卡号一种，删除该条数据即可!
                         facedata.cursor.execute("DELETE FROM user WHERE student_id = ?",(i["student_id"],))
                     else:
                         # 需要更新人脸数据
-                        facedata.cursor.execute("UPDATE user SET face_data = ? WHERE student_id = ?",(i["face_data"],i["student_id"]))
+                        facedata.cursor.execute("UPDATE user SET card_id = ? WHERE student_id = ?",(i["card_id"],i["student_id"]))
                 else:
                     # 用户不存在，只考虑是否需要新增
                     if i["is_none"] == False:
-                        facedata.cursor.execute("INSERT INTO user (student_id,username,face_data) values (?,?,?)",(i["student_id"],i["username"],i["face_data"]))
+                        facedata.cursor.execute("INSERT INTO user (card_id,student_id,username) values (?,?,?)",(i["card_id"],i["student_id"],i["username"]))
             facedata.conn.commit()
             return jsonify({"code":1,"msg":"增量同步成功"})
 
         elif data["model"] == 'NEW':
             facedata.cursor.execute("DELETE FROM user")
-            for i in user_data:
+            for i in card_data:
                 if i["is_none"] == False:
-                    facedata.cursor.execute("INSERT INTO user (student_id,username,face_data) values (?,?,?)",
-                                            (i["student_id"], i["username"], i["face_data"]))
+                    facedata.cursor.execute("INSERT INTO user (card_id,student_id,username) values (?,?,?)",
+                                            ( i["card_id"],i["student_id"], i["username"]))
             facedata.conn.commit()
             return jsonify({"code":1,"msg":"全新同步成功"})
         else:
