@@ -1,4 +1,5 @@
 search_uri = "/home/ai/card_id_client/examples/search.html"
+sidebar_uri = "/home/ai/card_id_client/examples/sidebar.html"
 # 相对路径假如运行用的python example/find_face_qt_v2.py就用的根目录的数据库 直接进example里python find_face_qt_v2.py就是这个目录，所以写死
 db_uri = "/home/ai/card_id_client/examples/face_data.db"
 

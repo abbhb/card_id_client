@@ -25,7 +25,7 @@ from PyQt5.QtWidgets import *
 
 import sys
 
-from config import search_uri, server_port, java_server_ip,secert,service_id
+from config import search_uri, server_port, java_server_ip, secert, service_id, sidebar_uri
 from consul_service import ConsulService
 from card_panel import SuccessDataPanel, noDataPanel, ErrorDataPanel, loadingDataPanel
 from card_data_lite import CardData
@@ -243,18 +243,20 @@ class MainPanel(QWidget):
         self.button_layout.addWidget(self.time_label, 0, 0)
 
     def init_user_info_ui(self):
-        self.user_info = QStackedLayout()
+        # 原来实现的纯 qt
+        self.user_info_webview = QWebEngineView()
+        self.user_info_webview.load(QUrl("file://" + sidebar_uri))
 
-        self.success_info = SuccessDataPanel()
-        self.error_info = ErrorDataPanel()
-        self.default_info = noDataPanel()
-        self.loading_info = loadingDataPanel()
-        self.user_info.addWidget(self.default_info)
-        self.user_info.addWidget(self.success_info)
-        self.user_info.addWidget(self.error_info)
-        self.user_info.addWidget(self.loading_info)
-        self.button_layout.addLayout(self.user_info,1,0)
-        self.user_info.setCurrentIndex(0)
+        # self.success_info = SuccessDataPanel()
+        # self.error_info = ErrorDataPanel()
+        # self.default_info = noDataPanel()
+        # self.loading_info = loadingDataPanel()
+        # self.user_info.addWidget(self.default_info)
+        # self.user_info.addWidget(self.success_info)
+        # self.user_info.addWidget(self.error_info)
+        # self.user_info.addWidget(self.loading_info)
+        # self.button_layout.addLayout(self.user_info,1,0)
+        # self.user_info.setCurrentIndex(0)
 
     def success_executeAfterDelay(self):
         self.qlabel.setStyleSheet("QLabel{background:white;}"
@@ -292,12 +294,12 @@ class MainPanel(QWidget):
 
     def shibiechenggong(self, status:bool,obj: object):
         if status:
-            self.success_info.updateData(obj["school_id"],obj["name"],obj["thumbnail"])
-            self.user_info.setCurrentIndex(1)
+            # 告诉js识别成功，传入所需的信息，其他的交给js
+            self.user_info_webview.page().runJavaScript("Success('" + obj["school_id"] + "','"+obj["name"]+"','"+obj["room"] +"','"+obj["thumbnail"]+"')")
+            # self.success_info.updateData(obj["school_id"],obj["name"],obj["thumbnail"])
+            # self.user_info.setCurrentIndex(1)
         else:
-            self.error_info.showMsg(obj["card_status"])
-            self.user_info.setCurrentIndex(2)
-
+            self.user_info_webview.page().runJavaScript("Error('" + obj["card_status"]+"')")
         # self.qls.setCurrentIndex(0)
         # self.one.updateFrame(base64)
         # self.update_user_face()
@@ -309,9 +311,9 @@ class MainPanel(QWidget):
     def guocheng(self, shifoushibie: bool):
         # shifoushibie 为true就是在识别否则就是切换默认视图
         if shifoushibie:
-            self.user_info.setCurrentIndex(0)
+            self.user_info_webview.page().runJavaScript("ShiBieZhong('1')")
         else:
-            self.user_info.setCurrentIndex(3)
+            self.user_info_webview.page().runJavaScript("ShiBieZhong('0')")
         # self.two.update(base64)
         # self.qls.setCurrentIndex(1)
 
