@@ -146,7 +146,7 @@ class MainPanel(QWidget):
         # 预览四个边都预留20pixs的边界
         self.mainPanel_layout.setContentsMargins(20, 20, 20, 20)
         # 网格之间设置10pixs的间隔
-        self.mainPanel_layout.setSpacing(10)
+        # self.mainPanel_layout.setSpacing(10)
         self.button_layout = QGridLayout()
         self.mainPanel_layout.addLayout(self.button_layout, 0, 1)
 
