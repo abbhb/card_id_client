@@ -364,7 +364,7 @@ class onePanel(QWidget):
 
         self.webview = QWebEngineView()
 
-        self.webview.load(QUrl("https://webvpn.beihua.edu.cn"))
+        self.webview.load(QUrl("http://10.15.247.254:19400/"))
 
         # self.qlabel = QLabel("wait!!!!!!!!!!!!!!!!!")
         self.onePanel_layout.addWidget(self.webview)
