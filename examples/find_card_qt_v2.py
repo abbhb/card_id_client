@@ -622,8 +622,10 @@ class UpdataCardDataThread(QThread):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
+
     main = MainPanel()
-    main.show()
+    main.showFullScreen()
+
     consulasd = ConsulService()
 
 
