@@ -228,7 +228,7 @@ class MainPanel(QWidget):
 
     def init_time_ui(self):
         self.time_label = QLabel(self)
-        self.time_label.setFixedWidth(button_Width+80)
+        self.time_label.setFixedWidth(button_Width+70)
         self.time_label.move(90, 80)
         self.time_label.setStyleSheet("QLabel{background:white;}"
                                       "QLabel{color:rgb(300,300,300,120);font-size:20px;font-weight:bold;font-family:宋体;}"
