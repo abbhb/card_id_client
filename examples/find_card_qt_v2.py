@@ -14,7 +14,7 @@ import numpy
 # import face_recognition
 import numpy as np
 from PyQt5 import QtCore, QtWidgets
-from PyQt5.QtCore import QUrl, pyqtSignal, QThread, QTimer, QDateTime, QProcess, QByteArray
+from PyQt5.QtCore import QUrl, pyqtSignal, QThread, QTimer, QDateTime, QProcess, QByteArray, Qt
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtWebChannel import QWebChannel
 from PyQt5.QtWebEngineWidgets import QWebEngineView
@@ -240,6 +240,7 @@ class MainPanel(QWidget):
         timer.timeout.connect(self.update_time_v)
 
         timer.start(1000)
+        self.button_layout.setAlignment(Qt.AlignHCenter)
         self.button_layout.addWidget(self.time_label, 0, 0)
 
     def init_user_info_ui(self):
