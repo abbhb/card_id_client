@@ -246,6 +246,10 @@ class MainPanel(QWidget):
         # 原来实现的纯 qt
         self.user_info_webview = QWebEngineView()
         self.user_info_webview.load(QUrl("file://" + sidebar_uri))
+        # 初始化更新结果定时器
+        self.user_info_timer = QTimer(self)
+        self.user_info_timer.timeout.connect(self.restoreDefault)
+        self.user_info_timer.setInterval(2400)  # 设置定时器间隔为2400毫秒（2.4秒）
 
         # self.success_info = SuccessDataPanel()
         # self.error_info = ErrorDataPanel()
@@ -304,18 +308,29 @@ class MainPanel(QWidget):
         # self.qls.setCurrentIndex(0)
         # self.one.updateFrame(base64)
         # self.update_user_face()
+        self.startUserInfoToDefaultTimer()
+
         pass
     # def update_user_face(self,base64:str):
 
 
-
+    def restoreDefault(self):
+        # 这个用于重返默认，需要在其他的都来个定时器显示这个
+        self.user_info_webview.page().runJavaScript("ShiBieZhong('0')")
+    def startUserInfoToDefaultTimer(self):
+        # 如果定时器已经在运行，重置它
+        if self.user_info_timer.isActive():
+            self.user_info_timer.start(2400)  # 重新设置定时器
+        else:
+            self.user_info_timer.start()  # 启动定时器
     def guocheng(self, shifoushibie: bool):
         # shifoushibie 为true就是在识别否则就是切换默认视图
         if shifoushibie:
             self.user_info_webview.page().runJavaScript("ShiBieZhong('1')")
+            self.startUserInfoToDefaultTimer()
         else:
+            self.restoreDefault()
             # 这个用于重返默认，需要在其他的都来个定时器显示这个
-            self.user_info_webview.page().runJavaScript("ShiBieZhong('0')")
         # self.two.update(base64)
         # self.qls.setCurrentIndex(1)
 
