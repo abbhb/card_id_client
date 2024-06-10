@@ -8,5 +8,5 @@ secert = "sbgh34y234"
 my_ip = "10.15.246.66"
 service_id = "ger354as24"
 consul_server_ip = "192.168.12.12"
-consul_server_port = 18500
-java_server_ip = "10.15.247.223"
+consul_server_port = 8500
+java_server_ip = "10.15.247.254"
