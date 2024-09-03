@@ -60,6 +60,7 @@ python -m pip install --upgrade pip
 ### 9.已经能运行find_[find_card_qt_v2.py](examples%2Ffind_card_qt_v2.py)
 记得修改网络和config.py里的配置
 
+### 10.运行前记得给dev/ttyS0的777权限，不然会报错的
 
 
 # 全局解决问题
