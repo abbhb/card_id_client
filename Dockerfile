@@ -34,7 +34,7 @@ COPY . /app
 ENV PYTHONUNBUFFERED=1
 
 # 安装 Python 依赖
-RUN pip install -r requirements_server.txt
+RUN pip install -r requirements.txt
 
 # 暴露应用程序的端口
 EXPOSE 12354
