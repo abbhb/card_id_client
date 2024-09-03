@@ -4,11 +4,9 @@ blinker==1.7.0
 certifi==2024.2.2
 charset-normalizer==3.3.2
 click==8.1.7
-dlib
 dnspython==2.6.1
 email_validator==2.1.1
 exceptiongroup==1.2.1
-face-recognition==1.3.0
 fastapi==0.111.0
 fastapi-cli==0.0.3
 h11==0.14.0
