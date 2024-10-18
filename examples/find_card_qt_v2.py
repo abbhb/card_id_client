@@ -25,7 +25,7 @@ from PyQt5.QtWidgets import *
 
 import sys
 
-from config import search_uri, server_port, java_server_ip, secert, service_id, sidebar_uri
+from config import search_uri, server_port, java_server_ip, secert, service_id, sidebar_uri,card_mode
 from consul_service import ConsulService
 from card_panel import SuccessDataPanel, noDataPanel, ErrorDataPanel, loadingDataPanel
 from card_data_lite import CardData
@@ -527,6 +527,13 @@ class CardReadWorkerThread(QThread):
                     s = data.decode("utf-8")[2:]
                     if s:
                         self.update_shibie_signal.emit(True)
+                        if card_mode == 16:
+                            s = int(s, 16)
+                        elif card_mode == 10:
+                            s = int(s)
+                        else:
+                            print("打卡器mode未在config.py定义！")
+                            exit(-1)
                         objk = self.deal_card(int(s, 16))
                         if objk["code"]==0:
                             # 失败
