@@ -1,31 +1,55 @@
 # 安装指引
+推荐使用windows部署，Linux下会导致web容器内无法播放视频
 
-
-## 推荐python3.8（apt安装即可）
+## 推荐python3.8
 ## 前置
 如果你的是python3.8就对应改命令，结合自己环境
 
 
-不知道你用的python在哪
-```which python3.8```
-
-如果默认python命令为空，但是apt安装了3.8可以结合自己路径设置，最后的1代表优先级为1
-```sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.8 1```
-
-
+防止pip到别的python，请严格遵循python -m pip的语法，确保使用的是对应环境的pip
 
 某python的pip升级命令
 ```python -m pip install --upgrade pip```
 
 设置镜像源，报错说明版本还没升级
 ```python -m pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple```
+## 当前完整pip list截图
+![img.png](docs/img_3.png)
+![img_1.png](docs/img_1.png)
+![img_2.png](docs/img_2.png)
+
+## windows部署本项目教程
+
+### 环境安装
+##### 1
+```shell
+pip install -r requirements.txt
+```
+##### 2
+然后手动安装本地的pyqt的whl包，先安装doc里的[不存在doc，文件服务器下载](https://file.easyus.top/files/Data/card%E9%A1%B9%E7%9B%AE%E4%BE%9D%E8%B5%96/)
+
+按顺序执行！
+- pip install [PyQt5-5.14.2-5.14.2-cp35.cp36.cp37.cp38-none-win_amd64.whl](doc%2FPyQt5-5.14.2-5.14.2-cp35.cp36.cp37.cp38-none-win_amd64.whl)
+- pip install [PyQtWebEngine-5.14.0-5.14.2-cp35.cp36.cp37.cp38-none-win_amd64.whl](doc%2FPyQtWebEngine-5.14.0-5.14.2-cp35.cp36.cp37.cp38-none-win_amd64.whl)
+##### 3
+然后找到你的python环境目录，找到site-packages\PyQt5\Qt\bin目录，进去
+- 解压[需要覆盖替换.zip](doc%2F%D0%E8%D2%AA%B8%B2%B8%C7%CC%E6%BB%BB.zip)把里面的文件复制进该目录，覆盖文件（用于支持web的video）
+##### 大功告成
+环境到这里已经安装完成
+
+
+### 运行
+- config.py的my_ip是当前机器真实ip
+- 先修改config.py，注意的是db的位置需要写绝对路径，防止出现不通位置启动路径不同
+- 设备管理器查看真实打卡机所在COM端口，修改config.py的card_com，注意大写
+![img.png](docs/img.png)
+- python [find_card_qt_v2.py](examples%2Ffind_card_qt_v2.py) 启动就好
+![img.png](docs/img2.png)
 
 
 
 
-# consul_service.py文件里注意修改本机ip
-
-
+# 下面为过时的教程（保留，不推荐，且不更新维护）
 ## 新的Ubuntu_desktop18.04
 ### 1.设置apt源为清华源并apt upgrade
 ### 2.sudo apt install python3.8

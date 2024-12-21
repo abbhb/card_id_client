@@ -25,7 +25,7 @@ from PyQt5.QtWidgets import *
 
 import sys
 
-from config import search_uri, server_port, java_server_ip, secert, service_id, sidebar_uri,card_mode
+from config import search_uri, server_port, java_server_ip, secert, service_id, sidebar_uri,card_mode,card_com
 from consul_service import ConsulService
 from card_panel import SuccessDataPanel, noDataPanel, ErrorDataPanel, loadingDataPanel
 from card_data_lite import CardData
@@ -42,7 +42,7 @@ shared_variable = {
 
 
 serial_port = serial.Serial(
-    port='/dev/ttyS0',
+    port=card_com,
     baudrate=9600,
     bytesize=serial.EIGHTBITS,
     parity=serial.PARITY_NONE,
@@ -363,6 +363,7 @@ class onePanel(QWidget):
         self.onePanel_layout = QHBoxLayout()
 
         self.webview = QWebEngineView()
+
 
         self.webview.load(QUrl("http://10.15.247.254:19400/"))
 
