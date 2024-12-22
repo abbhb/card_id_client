@@ -246,7 +246,7 @@ class MainPanel(QWidget):
     def init_user_info_ui(self):
         # 原来实现的纯 qt
         self.user_info_webview = QWebEngineView()
-        self.user_info_webview.load(QUrl("file://" + sidebar_uri))
+        self.user_info_webview.load(QUrl("file:///" + sidebar_uri))
         # 初始化更新结果定时器
         self.user_info_timer = QTimer(self)
         self.user_info_timer.timeout.connect(self.restoreDefault)
@@ -390,7 +390,7 @@ class twoPanel(QWidget):
         self.webview = QWebEngineView()
 
         twoPanel_layout.addWidget(self.webview)
-        self.webview.load(QUrl("file://"+search_uri))
+        self.webview.load(QUrl("file:///"+search_uri))
         self.setLayout(twoPanel_layout)
 
     def update(self, base64: str):
@@ -409,7 +409,7 @@ class successFaceWidget(QWidget):
         self.webview.setFixedWidth(1500)
         self.webview.setFixedHeight(900)
         successFace_layout.addWidget(self.webview)
-        self.webview.load(QUrl("file://"+search_uri))
+        self.webview.load(QUrl("file:///"+search_uri))
         self.setLayout(successFace_layout)
 
     def update(self, base64: str):
