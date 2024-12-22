@@ -273,7 +273,7 @@ class MainPanel(QWidget):
     def update_time_v(self):
         datetime = QDateTime.currentDateTime()
         text = datetime.toString()
-        self.time_label.setText("     " + text)
+        self.time_label.setText(" " + text)
 
     def buttonIsClicked(self, button):
         dic = {
