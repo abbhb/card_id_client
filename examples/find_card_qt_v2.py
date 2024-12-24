@@ -529,13 +529,15 @@ class CardReadWorkerThread(QThread):
                     if s:
                         self.update_shibie_signal.emit(True)
                         if card_mode == 16:
+                            print("16进制输出版")
+                            print(s)
                             s = int(s, 16)
                         elif card_mode == 10:
                             s = int(s)
                         else:
                             print("打卡器mode未在config.py定义！")
                             exit(-1)
-                        objk = self.deal_card(int(s, 16))
+                        objk = self.deal_card(s)
                         if objk["code"]==0:
                             # 失败
                             self.success_qiandao.emit(False,objk)
