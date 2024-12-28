@@ -88,5 +88,8 @@ python -m pip install --upgrade pip
 
 
 # 全局解决问题
-
+## linux下常见问题
 https://blog.csdn.net/LOVEmy134611/article/details/107212845 解决qt-xcb
+## windows下常见问题
+![img.png](docs/img4.png)
+换相对路径，不过日后一定要保证启动的方式一致，否则导致打开的数据库容易不一致,建议在项目根目录 `python examples/find_card_qt_v2.py` 去启动
